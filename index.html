@@ -14,7 +14,7 @@
             <h2>Login</h2>
             <form id="login-form">
                 <label for="username">Username</label>
-                <input type="text" id="username" required />
+                <input type="text" id="username" placeholder="Enter roll number or GR number" required />
                 
                 <label for="password">Password</label>
                 <input type="password" id="password" required />
@@ -81,8 +81,107 @@
             </table>
         </div>
 
+        <!-- Additional Features -->
+        <div id="features-section" class="card hidden">
+            <h2>Additional Features</h2>
+
+            <!-- Syllabus and Textbooks -->
+            <div class="feature-block">
+                <h3>Add Syllabus & Textbooks</h3>
+                <form id="syllabus-form">
+                    <label for="syllabus">Syllabus Details</label>
+                    <textarea id="syllabus" placeholder="Enter syllabus details"></textarea>
+
+                    <label for="textbooks">Textbooks</label>
+                    <textarea id="textbooks" placeholder="Enter textbook names"></textarea>
+
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+
+            <!-- Handwritten Notes -->
+            <div class="feature-block">
+                <h3>Add Handwritten Notes</h3>
+                <form id="notes-form">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" placeholder="Write handwritten notes"></textarea>
+                    <button type="submit">Post Note</button>
+                </form>
+            </div>
+
+            <!-- Attendance Credit Points -->
+            <div class="feature-block">
+                <h3>Attendance Credit Points</h3>
+                <form id="attendance-form">
+                    <label for="attendance">Enter Attendance Percentage</label>
+                    <input type="number" id="attendance" min="0" max="100" placeholder="Enter percentage" />
+                    <button type="submit">Calculate Points</button>
+                </form>
+            </div>
+
+            <!-- Notice Column -->
+            <div class="feature-block">
+                <h3>Notice Board</h3>
+                <form id="notice-form">
+                    <label for="notice">New Notice</label>
+                    <textarea id="notice" placeholder="Enter notice here"></textarea>
+                    <button type="submit">Add Notice</button>
+                </form>
+            </div>
+
+            <!-- Lost and Found -->
+            <div class="feature-block">
+                <h3>Lost & Found</h3>
+                <form id="lostfound-form">
+                    <label for="lostfound">Item Description</label>
+                    <textarea id="lostfound" placeholder="Enter lost/found item details"></textarea>
+                    <button type="submit">Add Entry</button>
+                </form>
+            </div>
+
+            <!-- Leave Request -->
+            <div class="feature-block">
+                <h3>Leave Request</h3>
+                <form id="leave-form">
+                    <label for="leave-date">Date</label>
+                    <input type="date" id="leave-date" />
+
+                    <label for="leave-reason">Reason</label>
+                    <textarea id="leave-reason" placeholder="Enter reason for leave"></textarea>
+
+                    <button type="submit">Submit Request</button>
+                </form>
+            </div>
+
+            <!-- Tentative Exam Timetable -->
+            <div class="feature-block">
+                <h3>Exam Timetable by Tentative Order</h3>
+                <form id="exam-form">
+                    <label for="tentative-subjects">Tentative Order of Subjects</label>
+                    <textarea id="tentative-subjects" placeholder="Enter subjects separated by commas"></textarea>
+                    <button type="submit">Generate Exam Timetable</button>
+                </form>
+            </div>
+
+            <!-- Poll for Students -->
+            <div class="feature-block">
+                <h3>Student Poll</h3>
+                <form id="poll-form">
+                    <label for="poll-question">Question</label>
+                    <input type="text" id="poll-question" placeholder="Enter your question here" />
+
+                    <label for="poll-answer">Answer</label>
+                    <input type="text" id="poll-answer" placeholder="Enter answer here" />
+
+                    <button type="submit">Submit Poll</button>  
+                </form>
+            </div>
+
+        </div>
+
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
