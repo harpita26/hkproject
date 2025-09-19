@@ -11,11 +11,15 @@ body {
 }
 
 .card {
-    background-color: #fff;
+    position: relative;
     padding: 20px;
     margin-bottom: 20px;
-    border-radius: 8px;
+    border: 2px solid rgba(255,255,255,.5);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background:transparent;
+    border-radius:20px; 
+    backdrop-filter: blur(20px);
+
 }
 
 h2 {
