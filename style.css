@@ -1,82 +1,282 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #121212;
-  color: white;
-  margin: 0;
-  padding: 0;
-}
+       body {
+            font-family: Arial, sans-serif;
+            background-color: #11115c;
+            margin: 0;
+            padding: 20px;
+        }
 
-header {
-  background: #1f1f1f;
-  padding: 20px;
-  text-align: center;
-}
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
 
-header h1 {
-  margin: 0;
-  font-size: 24px;
-}
+        .card {
+            position: relative;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(255,255,255,.5);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background:transparent;
+            border-radius:20px; 
+            backdrop-filter: blur(20px);
+        }
 
-.container {
-  padding: 20px;
-}
+        h2 {
+            margin-bottom: 15px;
+            color: #fff;
+        }
 
-.feature-block {
-  background: #1e1e1e;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
-}
+        h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
 
-.feature-block h3 {
-  margin-top: 0;
-  color: #00bfff;
-}
+        form label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            color: #fff;
+        }
 
-label {
-  display: block;
-  margin: 10px 0 5px;
-}
+        form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
 
-input, select, button {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: none;
-}
+        form textarea {
+            height: 80px;
+        }
 
-button {
-  background: #00bfff;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
+        form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-button:hover {
-  background: #0099cc;
-}
+        form button:hover {
+            background-color: #0056b3;
+        }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
+        .hidden {
+            display: none;
+        }
 
-table th, table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
+        #timetable-grid {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-table th {
-  background-color: #28a745;
-  color: white;
-}
+        #timetable-grid th, #timetable-grid td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            color: #fff;
+        }
 
-.result {
-  font-weight: bold;
-  margin-top: 10px;
-  color: #00ffcc;
-}
+        #timetable-grid th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .feature-block {
+            border-top: 1px solid rgba(255,255,255,.3);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .feature-block h4 {
+            margin: 0 0 10px 0;
+            color: #fff;
+        }
+
+        /* Attendance Streak Styles */
+        .streak-container {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .streak-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .streak-count {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .streak-number {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .streak-label {
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .flame-icon {
+            font-size: 40px;
+            animation: flame 1.5s ease-in-out infinite;
+        }
+
+        @keyframes flame {
+            0%, 100% { transform: scale(1) rotate(-5deg); }
+            25% { transform: scale(1.05) rotate(5deg); }
+            50% { transform: scale(1.1) rotate(-5deg); }
+            75% { transform: scale(1.05) rotate(5deg); }
+        }
+
+        .streak-calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-day.present {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: pulse 2s infinite;
+        }
+
+        .calendar-day.absent {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .calendar-day.today {
+            border: 2px solid #ffd93d;
+            box-shadow: 0 0 15px rgba(255, 217, 61, 0.5);
+        }
+
+        .calendar-day.future {
+            background: rgba(255,255,255,0.05);
+            opacity: 0.5;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .streak-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffd93d;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 5px;
+        }
+
+        .mark-attendance-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .mark-attendance-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .mark-attendance-btn:disabled {
+            background: rgba(255,255,255,0.2);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .milestone-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd93d, #ff6b6b);
+            color: #11115c;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            margin-left: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .achievement-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 1000;
+            animation: popIn 0.5s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .achievement-popup h3 {
+            color: #ffd93d;
+            margin-bottom: 10px;
+        }
+
+        .achievement-popup p {
+            color: #fff;
+        }
+
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            80% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
