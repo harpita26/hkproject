@@ -1,83 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Classroom & Timetable Scheduler</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Classroom Scheduler</title>
+  <link rel="stylesheet" href="style.css" />
+  
+
 </head>
 <body>
-  <header>
-    <h1>Smart Classroom & Timetable Scheduler</h1>
-  </header>
-
   <div class="container">
 
-    <!-- Feature List -->
-    <div class="feature-block">
-      <h3>Ideas / Features</h3>
-      <ul>
-        <li>Option to add syllabus and textbooks</li>
-        <li>Teachers can add handwritten notes in announcements</li>
-        <li>Login with Roll No. or GR No.</li>
-        <li>Credit points for high attendance</li>
-        <li>Notice column</li>
-        <li>Lost and Found</li>
-        <li>Leave request</li>
-        <li>Timetable generation</li>
-        <li>Polls for student feedback</li>
-      </ul>
+        <!-- Login Form -->
+        <div id="login-section" class="card">
+            <h2>Login</h2>
+            <p style="color: #ffd93d; font-size: 14px; margin-bottom: 15px;">
+                Demo Mode: Enter any username and password to continue
+            </p>
+            <form id="login-form">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter roll number or GR number (e.g., 2024001)" required />
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter any password" required />
+                
+                <button type="button" onclick="handleLogin()">Login</button>
+            </form>
+        </div>
+
+        <!-- Scheduler Input Form -->
+        <div id="scheduler-section" class="card hidden">
+            <h2>Timetable Scheduler</h2>
+            <form id="scheduler-form">
+                <label for="classrooms">Number of Classrooms</label>
+                <input type="number" id="classrooms" min="1" required />
+
+                <label for="subjects">Subjects (comma-separated)</label>
+                <input type="text" id="subjects" required />
+
+                <label for="faculty">Faculty Members (comma-separated)</label>
+                <input type="text" id="faculty" required />
+
+                <label for="classes-per-week">Classes per Week</label>
+                <input type="number" id="classes-per-week" min="1" required />
+
+                <button type="submit">Generate Timetables</button>
+            </form>
+        </div>
+
+        <!-- Timetable Suggestions -->
+        <div id="suggestions-section" class="card hidden">
+            <h2>Timetable Suggestions</h2>
+            <div id="suggestions-list">
+                <p>No timetable generated yet.</p>
+            </div>
+            <button id="approve-btn">Approve</button>
+        </div>
+
+        <!-- Timetable Viewer -->
+        <div id="timetable-section" class="card hidden">
+            <h2>Timetable</h2>
+            <table id="timetable-grid">
+                <thead>
+                    <tr>
+                        <th>Time Slot</th>
+                        <th>Classroom</th>
+                        <th>Subject</th>
+                        <th>Faculty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>9:00 - 10:00</td>
+                        <td>Room 101</td>
+                        <td>Math</td>
+                        <td>Prof. Sharma</td>
+                    </tr>
+                    <tr>
+                        <td>10:00 - 11:00</td>
+                        <td>Room 102</td>
+                        <td>Physics</td>
+                        <td>Dr. Mehta</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Additional Features -->
+        <div id="features-section" class="card hidden">
+            <h2>Additional Features</h2>
+
+            <!-- Attendance Streak Feature -->
+            <div class="feature-block">
+                <h3>🔥 Attendance Streak</h3>
+                <div class="streak-container">
+                    <div class="streak-header">
+                        <div class="streak-count">
+                            <span class="flame-icon">🔥</span>
+                            <div>
+                                <div class="streak-number" id="current-streak">0</div>
+                                <div class="streak-label">Day Streak</div>
+                            </div>
+                        </div>
+                        <button class="mark-attendance-btn" id="mark-attendance">Mark Today's Attendance</button>
+                    </div>
+                    
+                    <div class="streak-stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="longest-streak">0</div>
+                            <div class="stat-label">Longest Streak</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-days">0</div>
+                            <div class="stat-label">Total Present Days</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="attendance-percentage">0%</div>
+                            <div class="stat-label">Attendance %</div>
+                        </div>
+                    </div>
+
+                    <h4 style="color: #fff; margin-top: 20px;">This Month</h4>
+                    <div class="streak-calendar" id="attendance-calendar">
+                        <!-- Calendar will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Syllabus and Textbooks -->
+            <div class="feature-block">
+                <h3>Add Syllabus & Textbooks</h3>
+                <form id="syllabus-form">
+                    <label for="syllabus">Syllabus Details</label>
+                    <textarea id="syllabus" placeholder="Enter syllabus details"></textarea>
+
+                    <label for="textbooks">Textbooks</label>
+                    <textarea id="textbooks" placeholder="Enter textbook names"></textarea>
+
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+
+            <!-- Handwritten Notes -->
+            <div class="feature-block">
+                <h3>Add Handwritten Notes</h3>
+                <form id="notes-form">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" placeholder="Write handwritten notes"></textarea>
+                    <button type="submit">Post Note</button>
+                </form>
+            </div>
+
+            <!-- Attendance Credit Points -->
+            <div class="feature-block">
+                <h3>Attendance Credit Points</h3>
+                <form id="attendance-form">
+                    <label for="attendance">Enter Attendance Percentage</label>
+                    <input type="number" id="attendance" min="0" max="100" placeholder="Enter percentage" />
+                    <button type="submit">Calculate Points</button>
+                </form>
+            </div>
+
+            <!-- Notice Column -->
+            <div class="feature-block">
+                <h3>Notice Board</h3>
+                <form id="notice-form">
+                    <label for="notice">New Notice</label>
+                    <textarea id="notice" placeholder="Enter notice here"></textarea>
+                    <button type="submit">Add Notice</button>
+                </form>
+            </div>
+
+            <!-- Lost and Found -->
+            <div class="feature-block">
+                <h3>Lost & Found</h3>
+                <form id="lostfound-form">
+                    <label for="lostfound">Item Description</label>
+                    <textarea id="lostfound" placeholder="Enter lost/found item details"></textarea>
+                    <button type="submit">Add Entry</button>
+                </form>
+            </div>
+
+            <!-- Leave Request -->
+            <div class="feature-block">
+                <h3>Leave Request</h3>
+                <form id="leave-form">
+                    <label for="leave-date">Date</label>
+                    <input type="date" id="leave-date" />
+
+                    <label for="leave-reason">Reason</label>
+                    <textarea id="leave-reason" placeholder="Enter reason for leave"></textarea>
+
+                    <button type="submit">Submit Request</button>
+                </form>
+            </div>
+
+            <!-- Tentative Exam Timetable -->
+            <div class="feature-block">
+                <h3>Exam Timetable by Tentative Order</h3>
+                <form id="exam-form">
+                    <label for="tentative-subjects">Tentative Order of Subjects</label>
+                    <textarea id="tentative-subjects" placeholder="Enter subjects separated by commas"></textarea>
+                    <button type="submit">Generate Exam Timetable</button>
+                </form>
+            </div>
+
+            <!-- Poll for Students -->
+            <div class="feature-block">
+                <h3>Student Poll</h3>
+                <form id="poll-form">
+                    <label for="poll-question">Question</label>
+                    <input type="text" id="poll-question" placeholder="Enter your question here" />
+
+                    <label for="poll-answer">Answer</label>
+                    <input type="text" id="poll-answer" placeholder="Enter answer here" />
+
+                    <button type="submit">Submit Poll</button>  
+                </form>
+            </div>
+
+        </div>
+
     </div>
 
-    <!-- Attendance Sheet -->
-    <div class="feature-block">
-      <h3>Attendance Sheet</h3>
-      <form id="attendance-sheet-form">
-        <label for="student-name">Student Name</label>
-        <input type="text" id="student-name" placeholder="Enter student name" required />
-
-        <label for="student-roll">Roll Number</label>
-        <input type="text" id="student-roll" placeholder="Enter roll number" required />
-
-        <label>Status</label>
-        <select id="attendance-status">
-          <option value="Present">Present</option>
-          <option value="Absent">Absent</option>
-        </select>
-
-        <button type="submit">Mark Attendance</button>
-      </form>
-
-      <h4>Attendance Records</h4>
-      <table id="attendance-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Roll No.</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-
-    <!-- Credit Points Calculator -->
-    <div class="feature-block">
-      <h3>Attendance Credit Points Calculator</h3>
-      <form id="credit-form">
-        <label for="total-classes">Total Classes</label>
-        <input type="number" id="total-classes" required />
-
-        <label for="attended-classes">Attended Classes</label>
-        <input type="number" id="attended-classes" required />
-
-        <button type="submit">Calculate</button>
-      </form>
-      <p class="result" id="credit-result"></p>
-    </div>
-
-  </div>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+    </body>
 </html>
