@@ -1,61 +1,46 @@
-document.getElementById('login-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    document.getElementById('login-section').classList.add('hidden');
-    document.getElementById('scheduler-section').classList.remove('hidden');
+// Attendance Sheet Feature
+document.getElementById('attendance-sheet-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('student-name').value;
+  const roll = document.getElementById('student-roll').value;
+  const status = document.getElementById('attendance-status').value;
+
+  const table = document.querySelector('#attendance-table tbody');
+  const row = document.createElement('tr');
+
+  row.innerHTML = `
+    <td>${name}</td>
+    <td>${roll}</td>
+    <td style="color:${status === 'Present' ? 'lightgreen' : 'red'}">${status}</td>
+  `;
+
+  table.appendChild(row);
+
+  document.getElementById('attendance-sheet-form').reset();
 });
 
-document.getElementById('scheduler-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    document.getElementById('scheduler-section').classList.add('hidden');
-    document.getElementById('suggestions-section').classList.remove('hidden');
+// Credit Points Calculator
+document.getElementById('credit-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const total = parseInt(document.getElementById('total-classes').value);
+  const attended = parseInt(document.getElementById('attended-classes').value);
+
+  if (attended > total) {
+    document.getElementById('credit-result').textContent = "Attended classes cannot exceed total classes!";
+    return;
+  }
+
+  const percentage = (attended / total) * 100;
+  let creditPoints = 0;
+
+  if (percentage >= 90) creditPoints = 10;
+  else if (percentage >= 80) creditPoints = 8;
+  else if (percentage >= 70) creditPoints = 6;
+  else if (percentage >= 60) creditPoints = 4;
+  else creditPoints = 2;
+
+  document.getElementById('credit-result').textContent =
+    `Attendance: ${percentage.toFixed(2)}% → Credit Points: ${creditPoints}`;
 });
-
-document.getElementById('approve-btn').addEventListener('click', function() {
-    document.getElementById('suggestions-section').classList.add('hidden');
-    document.getElementById('timetable-section').classList.remove('hidden');
-    document.getElementById('features-section').classList.remove('hidden');
-});
-
-// Example handlers for additional forms
-document.getElementById('syllabus-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert("Syllabus and textbooks saved!");
-});
-
-document.getElementById('notes-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert("Handwritten note posted!");
-});
-
-document.getElementById('attendance-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const percentage = document.getElementById('attendance').value;
-    const points = Math.floor(percentage / 10);
-    alert(`Attendance points: ${points}`);
-});
-
-document.getElementById('notice-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert("Notice added!");
-});
-
-document.getElementById('lostfound-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert("Lost & Found entry added!");
-});
-
-document.getElementById('leave-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert("Leave request submitted!");
-});
-
-document.getElementById('exam-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert("Exam timetable generated!");
-});
-
-document.getElementById('poll-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert("Poll submitted!");
-});  
-
