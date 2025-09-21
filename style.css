@@ -1,92 +1,82 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #11115c;
-    margin: 0;
-    padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #121212;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #1f1f1f;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
 }
 
 .container {
-    max-width: 700px;
-    margin: auto;
-}
-
-.card {
-    position: relative;
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 2px solid rgba(255,255,255,.5);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    background:transparent;
-    border-radius:20px; 
-    backdrop-filter: blur(20px);
-
-}
-
-h2 {
-    margin-bottom: 15px;
-    color: #333;
-}
-
-h3 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-form label {
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-form input, form textarea, form button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-form textarea {
-    height: 80px;
-}
-
-form button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #0056b3;
-}
-
-.hidden {
-    display: none;
-}
-
-#timetable-grid {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#timetable-grid th, #timetable-grid td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
-#timetable-grid th {
-    background-color: #007bff;
-    color: white;
+  padding: 20px;
 }
 
 .feature-block {
-    border-top: 1px solid #ddd;
-    padding-top: 15px;
-    margin-top: 15px;
+  background: #1e1e1e;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
 }
-.feature-block h4 {
-    margin: 0 0 10px 0;
+
+.feature-block h3 {
+  margin-top: 0;
+  color: #00bfff;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+button {
+  background: #00bfff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0099cc;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+table th {
+  background-color: #28a745;
+  color: white;
+}
+
+.result {
+  font-weight: bold;
+  margin-top: 10px;
+  color: #00ffcc;
 }
